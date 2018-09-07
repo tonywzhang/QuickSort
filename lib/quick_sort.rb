@@ -35,12 +35,13 @@ class QuickSort
 
     return array if length < 2
 
-    pivot_idx = partition(array, start, length, &prc)
+    idx = partition(array, start, length, &prc)
 
-    left = pivot_idx - start
+    left = idx - start
     right = length - (left + 1)
+
     sort2!(array, start, left, &prc)
-    sort2!(array, pivot_idx + 1, right, &prc)
+    sort2!(array, idx + 1, right, &prc)
 
     array
   end
@@ -48,7 +49,7 @@ class QuickSort
   def self.partition(array, start, length, &prc)
     prc ||= Proc.new { |x, y| x <=> y }
 
-    new_pivot = start + rand(length)
+    new_pivot = start
     array[start], array[new_pivot] = array[new_pivot], array[start]
 
     pivot_idx = start
