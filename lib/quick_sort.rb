@@ -6,6 +6,15 @@ class QuickSort
   def self.sort1(array)
     return array if array.empty?
 
+    # pivot = array.first
+
+    # left = array.select { |num| pivot > num }
+    # middle = array.select { |num| pivot == num }
+    # right = array.select { |num| pivot < num }
+
+    new_pivot = rand(arr.length)
+
+    array[0], array[new_pivot] = array[new_pivot], array[0]
     pivot = array.first
 
     left = array.select { |num| pivot > num }
@@ -17,6 +26,9 @@ class QuickSort
 
   # In-place.
   def self.sort2!(array, start = 0, length = array.length, &prc)
+
+    # [2, 1, 13, 10, 6, 4]
+    #
 
     # BaseCase
     ## return if legnth <= 1
@@ -64,6 +76,8 @@ class QuickSort
         pivot_idx += 1
       end
     end
+
+    array[start], array[new_pivot] = array[new_pivot], array[start]
 
     pivot_idx
   end
